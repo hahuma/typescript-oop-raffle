@@ -13,6 +13,10 @@ export class Pessoa {
     return this._saldo;
   }
 
+  get cpf() {
+    return this._cpf;
+  }
+
   set saldo(newValue: number) {
     this._saldo = newValue;
   }

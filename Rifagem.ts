@@ -12,6 +12,10 @@ export class Rifagem extends Sorteio<Rifa> {
     return `O prêmio do sorteio é: ${this._premio}`;
   }
 
+  public get valor() {
+    return `O valor da rifa é de R$ ${+this._items[0].valor}`;
+  }
+
   public get rifasRestantes() {
     const restantes = this._items.filter((rifa) => !rifa.vendido);
     const restantesFormatado = restantes

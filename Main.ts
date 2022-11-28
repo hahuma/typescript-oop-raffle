@@ -5,12 +5,12 @@ import { Rifagem } from "./Rifagem";
 
 const rifas: Array<Rifa> = [];
 
-for (let i = 0; i <= 10; i++) {
+for (let i = 1; i <= 10; i++) {
   rifas.push(new Rifa(i, 20));
 }
 
 const sorteio = new Rifagem(rifas, 0, "Carro");
-const comprador = new Pessoa("João", "1212312312", 100);
+const comprador = new Pessoa("João", "121.231.231-02", 100);
 
 const teclado = prompt();
 let running = true;
@@ -21,8 +21,9 @@ while (running) {
   console.log("| 2 - Comprar rifa           |");
   console.log("| 3 - Ver rifas compradas    |");
   console.log("| 4 - Sortear rifa           |");
-  console.log("| 5 - Sair                   |");
-  console.log("============================== \n");
+  console.log("| 5 - Informações pessoais   |");
+  console.log("| 6 - Sair                   |");
+  console.log("==============================");
 
   const action = Number(teclado("Escolha uma ação: "));
 
@@ -31,6 +32,9 @@ while (running) {
       console.log(sorteio.rifasRestantes);
       break;
     case 2:
+      console.log(`Seu saldo R$ ${comprador.saldo}`);
+      console.log(sorteio.premio);
+      console.log(sorteio.valor);
       console.log(sorteio.rifasRestantes);
       const rifa = +teclado(
         "Escolha sua rifa entre os números acima(se algum valor inválido for inserido ou você não tiver dinheiro suficiente a compra será desconsiderada): "
@@ -43,7 +47,7 @@ while (running) {
         console.table(sorteio.rifasCompradas);
       }
       if (sorteio.rifasCompradas.length === 0) {
-        console.log("Nenhuma rifa foi comprada \n");
+        console.log("Nenhuma rifa foi comprada");
       }
       break;
     case 4:
@@ -52,6 +56,15 @@ while (running) {
       running = false;
       break;
     case 5:
+      console.log("=========   Comprador   ========");
+      console.log(` Nome:  ${comprador.nome}`);
+      console.log(` CPF:   ${comprador.cpf}`);
+      console.log(` Saldo: R$ ${comprador.saldo}`);
+      console.log("================================");
+
+      teclado("Aperte enter para continuar ");
+      break;
+    case 6:
     default:
       console.log("Saindo...");
       running = false;
